@@ -16,8 +16,97 @@ body {
     color: $main-color;
     background-image: $background-color;
     background-size: cover;
+    overflow-x: hidden;                 //Do zmiany jak burger ma być po lewej
 }
 
-h1 {
-    background-color: aqua;
+.hide {
+    display: none;
+}
+
+.active {
+    transform: translateX(-350px);
+}
+
+.activeBtn {
+    transform: translateX(-250px);
+}
+
+nav {
+    width: 90vw;
+    height: 100px;
+    margin-top: 32px;
+    border-radius: 16px;
+    background-color: #fff;
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        text-transform: uppercase;
+
+        .nav-brand {
+            margin-left: 40px;
+            font-size: 26px;
+            font-weight: bold;
+            color: $main-color;
+
+            .fa-solid {
+                margin-right: 10px;
+            }
+        }
+
+        .nav-items {
+            margin-right: 40px;
+
+            .nav-link {
+                margin: 0 10px;
+                text-decoration: none;
+                color: $main-color;
+                transition: color .3s;
+            }
+
+            .nav-link:hover {
+                color: $nav-color;
+            }
+        }
+
+        .burger {
+            margin-right: 30px;
+            font-size: 36px;
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .burger-items {
+            position: absolute;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100vh;
+            padding: 10px 20px;
+            font-size: 36px;
+            list-style: none;
+            background-color: #fff;
+            transition: .3s;
+
+            li {
+                margin: 50px 20px;
+                
+                a {
+                    text-decoration: none;
+                    color: $main-color;
+                    transition: color .3s;
+                }
+
+                a:hover {
+                    color: $nav-color;
+                }
+            }
+        }
+    }
 }
