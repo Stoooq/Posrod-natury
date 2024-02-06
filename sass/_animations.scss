@@ -1,0 +1,19 @@
+@keyframes slide-text-above {
+    from {
+        top: 40px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+
+@keyframes slide-text-under {
+    from {
+        bottom: 40px;
+    }
+
+    to {
+        bottom: 0;
+    }
+}

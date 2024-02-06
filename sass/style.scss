@@ -1,4 +1,5 @@
 @use "./colors" as *;
+@use "./animations" as *;
 
 * {
     box-sizing: border-box;
@@ -51,6 +52,7 @@ nav {
             font-size: 26px;
             font-weight: bold;
             color: $main-color;
+            cursor: default;
 
             .fa-solid {
                 margin-right: 10px;
@@ -106,6 +108,81 @@ nav {
                 a:hover {
                     color: $nav-color;
                 }
+            }
+        }
+    }
+}
+
+header {
+    width: 90vw;
+    margin-top: 32px;
+    border-radius: 16px;
+    overflow: hidden;
+
+    .header-img {
+        position: relative;
+        height: 100vh;
+        background-image: url('../img/header-img.jpg');
+        background-size: cover;
+        z-index: 0;
+
+        .header-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+            z-index: -1;
+        }
+
+        .header-text {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+            color: #fff;
+            transition: color .5s;
+
+            h1 {
+                font-size: 124px;
+            }
+            
+            .text-above {
+                position: absolute;
+                top: 320px;
+                width: 400px;
+                height: 30px;
+                overflow: hidden;
+            }
+
+            .text-above::before {
+                display: block;
+                position: absolute;
+                content: 'Witamy w';
+                left: 50%;
+                top: 40px;
+                transform: translateX(-50%);
+                animation: slide-text-above 1s 2s forwards;
+            }
+
+            .text-under {
+                position: absolute;
+                bottom: 320px;
+                width: 800px;
+                height: 30px;
+                overflow: hidden;
+            }
+
+            .text-under::before {
+                position: absolute;
+                content: 'Apartament w Jastrzębiej Górze';
+                left: 50%;
+                bottom: 40px;
+                transform: translateX(-50%);
+                animation: slide-text-under 1s 2s forwards;
             }
         }
     }

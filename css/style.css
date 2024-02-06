@@ -1,3 +1,20 @@
+@charset "UTF-8";
+@keyframes slide-text-above {
+  from {
+    top: 40px;
+  }
+  to {
+    top: 0;
+  }
+}
+@keyframes slide-text-under {
+  from {
+    bottom: 40px;
+  }
+  to {
+    bottom: 0;
+  }
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -49,6 +66,7 @@ nav .nav-container .nav-brand {
   font-size: 26px;
   font-weight: bold;
   color: black;
+  cursor: default;
 }
 nav .nav-container .nav-brand .fa-solid {
   margin-right: 10px;
@@ -96,4 +114,71 @@ nav .nav-container .burger-items li a {
 }
 nav .nav-container .burger-items li a:hover {
   color: #e6ae47;
+}
+
+header {
+  width: 90vw;
+  margin-top: 32px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+header .header-img {
+  position: relative;
+  height: 100vh;
+  background-image: url("../img/header-img.jpg");
+  background-size: cover;
+  z-index: 0;
+}
+header .header-img .header-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+header .header-img .header-text {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  color: #fff;
+  transition: color 0.5s;
+}
+header .header-img .header-text h1 {
+  font-size: 124px;
+}
+header .header-img .header-text .text-above {
+  position: absolute;
+  top: 320px;
+  width: 400px;
+  height: 30px;
+  overflow: hidden;
+}
+header .header-img .header-text .text-above::before {
+  display: block;
+  position: absolute;
+  content: "Witamy w";
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  animation: slide-text-above 1s 2s forwards;
+}
+header .header-img .header-text .text-under {
+  position: absolute;
+  bottom: 320px;
+  width: 800px;
+  height: 30px;
+  overflow: hidden;
+}
+header .header-img .header-text .text-under::before {
+  position: absolute;
+  content: "Apartament w Jastrzębiej Górze";
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  animation: slide-text-under 1s 2s forwards;
 }/*# sourceMappingURL=style.css.map */
