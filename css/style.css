@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  color: black;
+  background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
+  background-size: cover;
+}
+
+h1 {
+  background-color: aqua;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,23 @@
+@use "./colors" as *;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: $main-color;
+    background-image: $background-color;
+    background-size: cover;
+}
+
+h1 {
+    background-color: aqua;
+}
