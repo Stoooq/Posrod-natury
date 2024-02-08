@@ -1,21 +1,23 @@
 @use "./colors" as *;
 @use "./animations" as *;
+@use "./media" as *;
 
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     color: $main-color;
-    background-image: $background-color;
+    background-color: $background-color;
+    // background-image: $background-color;
     background-size: cover;
     overflow-x: hidden;                 //Do zmiany jak burger ma być po lewej
 }
@@ -28,16 +30,28 @@ body {
     transform: translateX(-350px);
 }
 
-.activeBtn {
+.active-btn {
     transform: translateX(-250px);
 }
 
+.round-section-right {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    overflow: hidden;
+}
+
+.round-section-left {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    overflow: hidden;
+}
+
 nav {
-    width: 90vw;
-    height: 100px;
-    margin-top: 32px;
-    border-radius: 16px;
-    background-color: #fff;
+    width: 100vw;
+    height: 10vh;
+    // margin-top: 32px;
+    // border-radius: 16px;
+    background-color: $section-color;
 
     .nav-container {
         display: flex;
@@ -95,6 +109,7 @@ nav {
             list-style: none;
             background-color: #fff;
             transition: .3s;
+            z-index: 1;
 
             li {
                 margin: 50px 20px;
@@ -115,13 +130,14 @@ nav {
 
 header {
     width: 90vw;
-    margin-top: 32px;
+    height: 82.2vh;
+    margin-top: 64px;
     border-radius: 16px;
     overflow: hidden;
 
     .header-img {
         position: relative;
-        height: 100vh;
+        height: 100%;
         background-image: url('../img/header-img.jpg');
         background-size: cover;
         z-index: 0;
@@ -152,9 +168,9 @@ header {
             
             .text-above {
                 position: absolute;
-                top: 320px;
+                top: 220px;
                 width: 400px;
-                height: 30px;
+                height: 45px;
                 overflow: hidden;
             }
 
@@ -163,16 +179,17 @@ header {
                 position: absolute;
                 content: 'Witamy w';
                 left: 50%;
-                top: 40px;
+                top: 45px;
                 transform: translateX(-50%);
                 animation: slide-text-above 1s 2s forwards;
+                letter-spacing: 3px;
             }
 
             .text-under {
                 position: absolute;
-                bottom: 320px;
-                width: 800px;
-                height: 30px;
+                bottom: 220px;
+                width: 900px;
+                height: 45px;
                 overflow: hidden;
             }
 
@@ -180,10 +197,170 @@ header {
                 position: absolute;
                 content: 'Apartament w Jastrzębiej Górze';
                 left: 50%;
-                bottom: 40px;
+                bottom: 45px;
                 transform: translateX(-50%);
                 animation: slide-text-under 1s 2s forwards;
+                letter-spacing: 3px;
             }
+        }
+    }
+}
+
+.card {
+    position: relative;
+    height: 300px;
+    perspective: 200px;
+
+    .img {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+        transition: .8s;
+    }
+
+    .text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 40px;
+        text-align: center;
+        background-color: $section-color;
+        color: $main-color;
+        transition: .8s;
+        opacity: 0;
+    }
+}
+
+.card:hover .text {
+    opacity: 1;
+}
+
+main {
+    width: 100vw;
+
+    .first-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 128px;
+        width: 100%;
+        height: 300px;
+
+        .first {
+            width: 57.5%;
+        }
+
+        .second {
+            width: 37.5%;
+        }
+
+        .one {
+            background-image: url('../img/salon.jpg');
+        }
+
+        .two {
+            background-image: url('../img/kuchnia.jpg');
+            background-position-y: 400px;
+        }
+
+        .card:hover .one {  
+            animation: up 1.2s;
+        }
+
+        .card:hover .text-one {
+            animation: down 1.2s;
+        }
+
+        .card:hover .two {
+            animation: up 1.2s forwards;
+        }
+
+        .card:hover .text-two {
+            animation: down 1.2s;
+        }    
+    }
+
+    .second-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 128px;
+        width: 100%;
+        height: 300px;
+
+        .third {
+            width: 37.5%;
+        }
+
+        .fourth {
+            width: 57.5%;
+        }
+
+        .three {
+            background-image: url('../img/lazienka.jpg');
+        }
+
+        .four {
+            background-image: url('../img/sypialnia.jpg');
+            background-position-y: 350px;
+        }
+
+        .card:hover .three {  
+            animation: up 1.2s forwards;
+        }
+
+        .card:hover .text-three {
+            animation: down 1.2s;
+        }
+
+        .card:hover .four {
+            animation: up 1.2s forwards;
+        }
+
+        .card:hover .text-four {
+            animation: down 1.2s;
+        }
+    }
+
+    .third-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 128px;
+        width: 100%;
+        height: 300px;
+
+        .fifth {
+            width: 57.5%;
+        }
+
+        .sixth {
+            width: 37.5%;
+        }
+
+        .five {
+            background-image: url('../img/IMG_2641.jpg');
+        }
+
+        .six {
+            background-image: url('../img/IMG_4142.jpg');
+            background-position-y: 400px;
+        }
+
+        .card:hover .five {  
+            animation: up 1.2s forwards;
+        }
+
+        .card:hover .text-five {
+            animation: down 1.2s;
+        }
+
+        .card:hover .six {
+            animation: up 1.2s forwards;
+        }
+
+        .card:hover .text-six {
+            animation: down 1.2s;
         }
     }
 }

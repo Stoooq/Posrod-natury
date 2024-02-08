@@ -5,7 +5,7 @@ const burgerItems = document.querySelector('.burger-items')
 
 const showBurgerIcon = () => {
     burgerItems.classList.toggle('active')
-    burgerBtn.classList.toggle('activeBtn')
+    burgerBtn.classList.toggle('active-btn')
     barsIcon.classList.toggle('hide')
     xIcon.classList.toggle('hide')
 }

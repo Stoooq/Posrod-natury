@@ -15,21 +15,49 @@
     bottom: 0;
   }
 }
+@keyframes up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-60%);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes down {
+  0% {
+    transform: translateY(0);
+    z-index: -1;
+  }
+  50% {
+    transform: translateY(60%);
+    z-index: -1;
+  }
+  100% {
+    z-index: 1;
+  }
+}
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   color: black;
-  background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
+  background-color: #fff;
   background-size: cover;
   overflow-x: hidden;
 }
@@ -42,16 +70,26 @@ body {
   transform: translateX(-350px);
 }
 
-.activeBtn {
+.active-btn {
   transform: translateX(-250px);
 }
 
+.round-section-right {
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  overflow: hidden;
+}
+
+.round-section-left {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  overflow: hidden;
+}
+
 nav {
-  width: 90vw;
-  height: 100px;
-  margin-top: 32px;
-  border-radius: 16px;
-  background-color: #fff;
+  width: 100vw;
+  height: 10vh;
+  background-color: #d2c8bc;
 }
 nav .nav-container {
   display: flex;
@@ -81,7 +119,7 @@ nav .nav-container .nav-items .nav-link {
   transition: color 0.3s;
 }
 nav .nav-container .nav-items .nav-link:hover {
-  color: #e6ae47;
+  color: #ba9a88;
 }
 nav .nav-container .burger {
   margin-right: 30px;
@@ -103,6 +141,7 @@ nav .nav-container .burger-items {
   list-style: none;
   background-color: #fff;
   transition: 0.3s;
+  z-index: 1;
 }
 nav .nav-container .burger-items li {
   margin: 50px 20px;
@@ -113,18 +152,19 @@ nav .nav-container .burger-items li a {
   transition: color 0.3s;
 }
 nav .nav-container .burger-items li a:hover {
-  color: #e6ae47;
+  color: #ba9a88;
 }
 
 header {
   width: 90vw;
-  margin-top: 32px;
+  height: 82.2vh;
+  margin-top: 64px;
   border-radius: 16px;
   overflow: hidden;
 }
 header .header-img {
   position: relative;
-  height: 100vh;
+  height: 100%;
   background-image: url("../img/header-img.jpg");
   background-size: cover;
   z-index: 0;
@@ -153,9 +193,9 @@ header .header-img .header-text h1 {
 }
 header .header-img .header-text .text-above {
   position: absolute;
-  top: 320px;
+  top: 220px;
   width: 400px;
-  height: 30px;
+  height: 45px;
   overflow: hidden;
 }
 header .header-img .header-text .text-above::before {
@@ -163,22 +203,154 @@ header .header-img .header-text .text-above::before {
   position: absolute;
   content: "Witamy w";
   left: 50%;
-  top: 40px;
+  top: 45px;
   transform: translateX(-50%);
   animation: slide-text-above 1s 2s forwards;
+  letter-spacing: 3px;
 }
 header .header-img .header-text .text-under {
   position: absolute;
-  bottom: 320px;
-  width: 800px;
-  height: 30px;
+  bottom: 220px;
+  width: 900px;
+  height: 45px;
   overflow: hidden;
 }
 header .header-img .header-text .text-under::before {
   position: absolute;
   content: "Apartament w Jastrzębiej Górze";
   left: 50%;
-  bottom: 40px;
+  bottom: 45px;
   transform: translateX(-50%);
   animation: slide-text-under 1s 2s forwards;
+  letter-spacing: 3px;
+}
+
+.card {
+  position: relative;
+  height: 300px;
+  perspective: 200px;
+}
+.card .img {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  transition: 0.8s;
+}
+.card .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 40px;
+  text-align: center;
+  background-color: #d2c8bc;
+  color: black;
+  transition: 0.8s;
+  opacity: 0;
+}
+
+.card:hover .text {
+  opacity: 1;
+}
+
+main {
+  width: 100vw;
+}
+main .first-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 128px;
+  width: 100%;
+  height: 300px;
+}
+main .first-section .first {
+  width: 57.5%;
+}
+main .first-section .second {
+  width: 37.5%;
+}
+main .first-section .one {
+  background-image: url("../img/salon.jpg");
+}
+main .first-section .two {
+  background-image: url("../img/kuchnia.jpg");
+  background-position-y: 400px;
+}
+main .first-section .card:hover .one {
+  animation: up 1.2s;
+}
+main .first-section .card:hover .text-one {
+  animation: down 1.2s;
+}
+main .first-section .card:hover .two {
+  animation: up 1.2s forwards;
+}
+main .first-section .card:hover .text-two {
+  animation: down 1.2s;
+}
+main .second-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 128px;
+  width: 100%;
+  height: 300px;
+}
+main .second-section .third {
+  width: 37.5%;
+}
+main .second-section .fourth {
+  width: 57.5%;
+}
+main .second-section .three {
+  background-image: url("../img/lazienka.jpg");
+}
+main .second-section .four {
+  background-image: url("../img/sypialnia.jpg");
+  background-position-y: 350px;
+}
+main .second-section .card:hover .three {
+  animation: up 1.2s forwards;
+}
+main .second-section .card:hover .text-three {
+  animation: down 1.2s;
+}
+main .second-section .card:hover .four {
+  animation: up 1.2s forwards;
+}
+main .second-section .card:hover .text-four {
+  animation: down 1.2s;
+}
+main .third-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 128px;
+  width: 100%;
+  height: 300px;
+}
+main .third-section .fifth {
+  width: 57.5%;
+}
+main .third-section .sixth {
+  width: 37.5%;
+}
+main .third-section .five {
+  background-image: url("../img/IMG_2641.jpg");
+}
+main .third-section .six {
+  background-image: url("../img/IMG_4142.jpg");
+  background-position-y: 400px;
+}
+main .third-section .card:hover .five {
+  animation: up 1.2s forwards;
+}
+main .third-section .card:hover .text-five {
+  animation: down 1.2s;
+}
+main .third-section .card:hover .six {
+  animation: up 1.2s forwards;
+}
+main .third-section .card:hover .text-six {
+  animation: down 1.2s;
 }/*# sourceMappingURL=style.css.map */
